@@ -1,12 +1,5 @@
 # EX02 - Programa com IF - Valida data
 
-anoLimite = 2008
-msgAcerto = "OK"
-msgErro = "ERRO"
-d = int(input())
-m = int(input())
-a = int(input())
-
 def checkLeapYear(a):
     if(a % 400 == 0):
         return True
@@ -24,14 +17,17 @@ def checkDay(d, m, a):
     if(d > 0):
         if(checkMonthThirtyFirst(m)):
             if(d < 32): return True
+            else: return False
         elif(isFeb(m)):
             if(checkLeapYear(a)):
                 if(d < 30): return True
+                else: return False
             elif(d < 29): return True
             else: return False
         else: 
             if(d < 31): return True
             else: return False
+    else: return False
 
 def checkMonth(m):
     if((m > 0) and (m < 13)): return True
@@ -42,7 +38,7 @@ def isFeb(m):
     else: return False
 
 def checkYear(a):
-    if (a <= anoLimite): return True
+    if (a >= anoLimite): return True
     else: False
 
 def wordsOfRadiance(d, m, a):
@@ -60,3 +56,13 @@ def wordsOfRadiance(d, m, a):
     else:
         print(msgErro)
         return 0
+
+
+anoLimite = 2008
+msgAcerto = "OK"
+msgErro = "ERRO"
+d = int(input())
+m = int(input())
+a = int(input())
+
+wordsOfRadiance(d, m, a)
